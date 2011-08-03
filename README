@@ -1,0 +1,3 @@
+A Django project to illustrate the working and implementation of different
+custom authentication backends, in tandem with Django's own authentication
+system.
