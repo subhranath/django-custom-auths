@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+<div id="id_messages">
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+	<h2>Welcome, {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.username }}{% endif %}!</h2>
+	<div><a href="{% url account.views.logout_handler %}">Logout</a></div>
+{% else %}
+	<h3>You are not authenticated. Login to proceed.</h3>
+	<div class="login">
+		<div class="login-option"><a href="{% url account.views.login_handler %}">Normal</div>
+	</div>
+{% endif %}
+{% endblock content %}

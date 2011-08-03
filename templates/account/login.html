@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Django Custom Auths - Login{% endblock title %}
+
+{% block content %}
+{% if messages %}
+<div id="id_messages">
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+<div>
+	<h3>Client Login:</h3>
+	<form method="post">
+		{% csrf_token %}
+		{% for field in form %}
+		<div class="field">
+			{{ field.label_tag }}: {{ field }} {{ field.errors }}
+		</div>
+		{% endfor %}
+		<input id="id_submit" type="submit" value="Submit" />
+		{{ form.non_field_errors }}
+	</form>
+</div>
+{% endblock content %}
