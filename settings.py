@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'account',
+    'facebook',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -154,5 +155,14 @@ LOGGING = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'facebook.backends.FacebookBackend',
+)
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
 FACEBOOK_APP_ID = '222026897833284'
 FACEBOOK_APP_SECRET = '175712afcb64656ca488844202394e0b'
+FACEBOOK_APP_PERMISSIONS = ''

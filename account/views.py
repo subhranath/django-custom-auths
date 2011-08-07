@@ -26,10 +26,13 @@ def login_handler(request):
             password = request.POST['password']
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)
-                if 'next' in request.GET:
-                    return HttpResponseRedirect(request.GET['next'])
-                return HttpResponseRedirect(reverse('account.views.index'))
+                if user.is_active:
+                    login(request, user)
+                    if 'next' in request.GET:
+                        return HttpResponseRedirect(request.GET['next'])
+                    return HttpResponseRedirect(reverse('account.views.index'))
+                else:
+                    messages.add_message(request, messages.ERROR, "Account disabled.")
             else:
                 messages.add_message(request, messages.ERROR, "Login failed.")
         

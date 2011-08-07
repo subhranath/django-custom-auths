@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load url from future %}
 
 {% block content %}
 {% if messages %}
@@ -13,11 +14,12 @@
 
 {% if user.is_authenticated %}
 	<h2>Welcome, {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.username }}{% endif %}!</h2>
-	<div><a href="{% url account.views.logout_handler %}">Logout</a></div>
+	<div><a href="{% url 'account.views.logout_handler' %}">Logout</a></div>
 {% else %}
 	<h3>You are not authenticated. Login to proceed.</h3>
 	<div class="login">
-		<div class="login-option"><a href="{% url account.views.login_handler %}">Normal</div>
+		<div class="login-option"><a href="{% url 'account.views.login_handler' %}">Usual Login</div>
+		<div class="login-option"><a href="{% url 'facebook.views.login_handler' %}">Login using Facebook</div>
 	</div>
 {% endif %}
 {% endblock content %}

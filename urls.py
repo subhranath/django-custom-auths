@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^$', 'account.views.index'),
     url(r'^login/$', 'account.views.login_handler'),
     url(r'^logout/$', 'account.views.logout_handler'),
+    url(r'^facebook/', include('facebook.urls')),
 )
