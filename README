@@ -1,13 +1,18 @@
-A Django project to illustrate the working and implementation of different
+To provide plugable django applications which integrates itself with
+Django's own authentication system, without breaking any existing django code.
+
+A demo Django project to illustrate the working and implementation of different
 custom authentication backends, in tandem with Django's own authentication
-system.
+system, is included.
 
-Aim: To provide plugable django applications which integrates itself with
-Django's own authentication system, without breaking any existing code.
-
-THIS IS A WORK IN PROGRESS, AND CURRENTLY NOT DOCUMENTED. 
+THIS IS A WORK IN PROGRESS, AND CURRENTLY NOT DOCUMENTED.
 
 Currently supported:
 -------------------
 - Usual Django login
 - Login with Facebook
+
+Installing (Tryout)
+-------------------
+Just clone this repo and hit 'runserver', to try this out.
+
