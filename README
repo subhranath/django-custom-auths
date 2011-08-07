@@ -1,3 +1,13 @@
 A Django project to illustrate the working and implementation of different
 custom authentication backends, in tandem with Django's own authentication
 system.
+
+Aim: To provide plugable django applications which integrates itself with
+Django's own authentication system, without breaking any existing code.
+
+THIS IS A WORK IN PROGRESS, AND CURRENTLY NOT DOCUMENTED. 
+
+Currently supported:
+-------------------
+- Usual Django login
+- Login with Facebook
