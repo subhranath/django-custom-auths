@@ -58,6 +58,7 @@ def login_handler(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
+                request.session.set_expiry(fb_user.expiry_at)
                 if 'next' in request.GET:
                     return HttpResponseRedirect(request.GET['next'])
                 return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
