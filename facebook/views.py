@@ -4,17 +4,21 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotAllowed,\
+    HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 import datetime
+import json
 import urllib
 import urlparse
 
-from facebook import utils
+from facebook import helpers, utils
 from facebook.models import FacebookUser
 
-FACEBOOK_LOGIN_URL = reverse('facebook.views.login_handler')
+FACEBOOK_LOGIN_URL = '/facebook/login/'
+#FACEBOOK_LOGIN_URL = reverse('facebook.views.login_handler')
 REDIRECT_URI = urlparse.urljoin( \
     'http://' + Site.objects.get_current().domain, FACEBOOK_LOGIN_URL
 )
@@ -106,3 +110,32 @@ def _create_or_update_facebook_user(profile, access_token, expires):
     fb_user.save()
     
     return fb_user
+
+@csrf_exempt
+def deauthorize_handler(request):
+    """Deauthorize handler.
+    """
+    if request.method == "GET":
+        return HttpResponseNotAllowed(['POST'])
+    else:
+        if 'signed_request' in request.POST:
+            signed_request_dict = helpers.unpack_signed_request( \
+                request.POST['signed_request'], settings.FACEBOOK_APP_SECRET \
+            )
+            if signed_request_dict:
+                _deauthorize_user(signed_request_dict['user_id'])
+                return HttpResponse(json.dumps({'deauthorized': True}), \
+                                    mimetype="application/json")
+            else:
+                return HttpResponseForbidden('Request not allowed.')
+        return HttpResponseBadRequest('Required parameter missing.')
+
+def _deauthorize_user(fb_id):
+    """An user has deauthorized the application.
+    """
+    try:
+        fb_user = FacebookUser.objects.get(fb_id=fb_id)
+    except FacebookUser.DoesNotExist:
+        return None
+    #TODO - This is not completed.
+    return HttpResponse("Temp done")

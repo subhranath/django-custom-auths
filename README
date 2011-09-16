@@ -1,3 +1,6 @@
+Django auth backends without breaking each other.
+(django.contrib.auth + facebook auth)
+
 To provide plugable django applications which integrates itself with
 Django's own authentication system, without breaking any existing django code.
 
@@ -7,10 +10,10 @@ system, is included.
 
 THIS IS A WORK IN PROGRESS, AND CURRENTLY NOT DOCUMENTED.
 
-Currently supported:
--------------------
+Currently supported, simultaneous auth backends:
+-------------------------------------------------
 - Usual Django login
-- Login with Facebook
+- Login with Facebook (using Facebook Graph API)
 
 Installing (Tryout)
 -------------------
