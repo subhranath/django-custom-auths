@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'account',
     'facebook',
+    'googleplus',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -158,11 +159,15 @@ LOGGING = {
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'facebook.backends.FacebookBackend',
+    'googleplus.backends.GooglePlusBackend',
 )
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
-FACEBOOK_APP_ID = '222026897833284'
-FACEBOOK_APP_SECRET = '175712afcb64656ca488844202394e0b'
+FACEBOOK_APP_ID = ''
+FACEBOOK_APP_SECRET = ''
 FACEBOOK_APP_PERMISSIONS = ''
+
+GOOGLEPLUS_CLIENT_ID = ''
+GOOGLEPLUS_CLIENT_SECRET = ''

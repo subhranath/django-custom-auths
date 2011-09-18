@@ -91,7 +91,8 @@ def _create_or_update_facebook_user(profile, access_token, expires):
     except FacebookUser.DoesNotExist:
         user = User.objects.create( \
             first_name=profile['first_name'],
-            last_name=profile['last_name']
+            last_name=profile['last_name'],
+            username='fb_' + profile['id']
         )
         user_is_created = True
         

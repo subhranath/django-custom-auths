@@ -20,6 +20,7 @@
 	<div class="login">
 		<div class="login-option"><a href="{% url 'account.views.login_handler' %}">Usual Login</div>
 		<div class="login-option"><a href="{% url 'facebook.views.login_handler' %}">Login using Facebook</div>
+		<div class="login-option"><a href="{% url 'googleplus.views.login_handler' %}">Login with Google+</div>
 	</div>
 {% endif %}
 {% endblock content %}

@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^login/$', 'account.views.login_handler'),
     url(r'^logout/$', 'account.views.logout_handler'),
     url(r'^facebook/', include('facebook.urls')),
+    url(r'^googleplus/', include('googleplus.urls')),
 )
