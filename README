@@ -1,5 +1,5 @@
 Django auth backends without breaking each other.
-(django.contrib.auth + facebook auth)
+(django.contrib.auth + facebook auth + googleplus auth)
 
 To provide plugable django applications which integrates itself with
 Django's own authentication system, without breaking any existing django code.

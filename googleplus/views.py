@@ -51,7 +51,7 @@ def login_handler(request):
         access_token = response_query_dict['access_token']
         expires_in = response_query_dict['expires_in']
         
-        profile = utils.graph_api('people/me', {'access_token': access_token})
+        profile = utils.api('people/me', {'access_token': access_token})
         
         googleplus_user = _create_or_update_googleplus_user(profile, access_token, expires_in)
         

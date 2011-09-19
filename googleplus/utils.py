@@ -2,7 +2,7 @@ import json
 import urllib
 import urlparse
 
-def graph_api(path, params, method="GET"):
+def api(path, params, method="GET"):
     """Invokes the Google+ API.
     Returns the response as python dictionary.
     """
